@@ -22,7 +22,6 @@ import './style.css';
 import metadata from './block.json';
 
 import Edit from './edit';
-import Save from './save';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -31,5 +30,4 @@ import Save from './save';
  */
 registerBlockType(metadata, {
   edit: Edit,
-  save: Save
 });
