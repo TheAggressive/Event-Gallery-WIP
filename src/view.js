@@ -50,8 +50,6 @@ const { state, actions, callbacks } = store('laao/event-gallery', {
       const context = getContext();
       const { ref } = getElement();
 
-      console.log(context, ref);
-
       actions.setImage(context, ref);
 
       // Bails out if the image has not loaded yet.
