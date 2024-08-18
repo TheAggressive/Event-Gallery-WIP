@@ -1,4 +1,4 @@
-@import "../../styles/_breakpoints.css";
+@import "_breakpoints.css";
 
 .wp-block-event-gallery {
   @apply grid auto-rows-[repeat(100px)] grid-cols-3 gap-3 overflow-hidden;
@@ -15,6 +15,10 @@
 .wp-block-event-gallery-item {
   & img {
     @apply block h-full min-w-full object-cover object-center;
+
+    &:hover {
+      @apply cursor-zoom-in;
+    }
   }
 }
 
