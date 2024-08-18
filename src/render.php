@@ -19,9 +19,9 @@ $context = array( 'images' => $attributes['images'] );
 	<?php
 	foreach ( array_chunk( $attributes['images'], 1, true ) as $images ) :
 		?>
-			<?php
-			foreach ( $images as $key => $image ) :
-				?>
+		<?php
+		foreach ( $images as $key => $image ) :
+			?>
 			<figure
 				data-wp-key="<?php echo esc_attr( $image['id'] ); ?>"
 				class="wp-block-event-gallery-item"
@@ -35,24 +35,24 @@ $context = array( 'images' => $attributes['images'] );
 				);
 				?>
 				>
-				<?php
-				echo wp_get_attachment_image(
-					$image['id'],
-					'large',
-					'',
-					array(
-						'class'                   => 'wp-block-event-gallery-item-image',
-						'loading'                 => 'lazy',
-						'alt'                     => $image['alt'] ? $image['alt'] : 'Image #' . $key + 1 . ' of ' . ucfirst( get_the_title() ),
-						'data-id'                 => $image['id'],
-						'data-wp-key'             => $image['id'],
-						'data-wp-on-async--click' => 'actions.showLightbox',
-						'data-wp-on--keydown'     => 'actions.handleImageKeydown',
-						'data-wp-on-async--load'  => 'callbacks.setOverlayStyles',
-						'tabindex'                => '0',
-					),
-				);
-				?>
+			<?php
+			echo wp_get_attachment_image(
+				$image['id'],
+				'large',
+				'',
+				array(
+					'class'                   => 'wp-block-event-gallery-item-image',
+					'loading'                 => 'lazy',
+					'alt'                     => $image['alt'] ? $image['alt'] : 'Image #' . $key + 1 . ' of ' . ucfirst( get_the_title() ),
+					'data-id'                 => $image['id'],
+					'data-wp-key'             => $image['id'],
+					'data-wp-on-async--click' => 'actions.showLightbox',
+					'data-wp-on--keydown'     => 'actions.handleImageKeydown',
+					'data-wp-on-async--load'  => 'callbacks.setOverlayStyles',
+					'tabindex'                => '0',
+				),
+			);
+			?>
 			</figure>
 			<?php endforeach; ?>
 	<?php endforeach; ?>
