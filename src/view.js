@@ -98,8 +98,7 @@ const { state, actions, callbacks } = store('laao/event-gallery', {
           });
 
           // Resets the current image id to mark the overlay as closed.
-          state.currentImageId = null;
-          state.currentImageIdRef = null;
+          actions.setImage(null, null);
 
           state.isLightboxClosing = false;
 
