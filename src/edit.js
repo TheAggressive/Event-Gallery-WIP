@@ -22,32 +22,30 @@ export default function Edit({ attributes, setAttributes }) {
           </MediaUploadCheck>
         </ToolbarGroup>
       </BlockControls>
-      <div {...useBlockProps()}>
-        {hasImages && (
-          <div className='wp-block-event-gallery'>
-            {attributes.images.map((image, index) => {
-              return (
-                <figure key={image.id} className='wp-block-event-gallery-item'>
-                  <img className={`wp-image-${image.id}`} key={index} loading='lazy' data-link={image.link} data-id={image.id} src={image.sizes.medium.url} />
-                </figure>
-              );
-            })}
-          </div>
-        )}
-        {!hasImages && (
-          <MediaPlaceholder
-            multiple
-            gallery
-            allowedTypes={['image']}
-            icon={<BlockIcon icon='format-gallery' />}
-            labels={{
-              title: 'Scrollable Gallery',
-              instructions: 'Create an awesome scrollable gallery.',
-            }}
-            onSelect={(newImages) => setAttributes({ images: newImages })}
-          />
-        )}
-      </div>
+      {hasImages && (
+        <div {...useBlockProps()} className={`wp-block-event-gallery has-event-gallery-images-${attributes.images.length}`}>
+          {attributes.images.map((image, index) => {
+            return (
+              <figure key={image.id} className='wp-block-event-gallery-item'>
+                <img className={`wp-image-${image.id}`} key={index} loading='lazy' data-link={image.link} data-id={image.id} src={image.sizes.full.url} />
+              </figure>
+            );
+          })}
+        </div>
+      )}
+      {!hasImages && (
+        <MediaPlaceholder
+          multiple
+          gallery
+          allowedTypes={['image']}
+          icon={<BlockIcon icon='format-gallery' />}
+          labels={{
+            title: 'Scrollable Gallery',
+            instructions: 'Create an awesome scrollable gallery.',
+          }}
+          onSelect={(newImages) => setAttributes({ images: newImages })}
+        />
+      )}
     </>
   );
 }
